@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <h1 class="text-center mb-4">Add Blog</h1>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="{{ form.title.id_for_label }}">Title:</label>
+          {{ form.title}}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.content.id_for_label }}">Content:</label>
+          {{ form.content }}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.image.id_for_label }}">Image:</label>
+          <input type="file" name="image" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="{{ form.categories.id_for_label }}">Categories:</label>
+          {{ form.categories }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

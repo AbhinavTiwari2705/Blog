@@ -1,0 +1,41 @@
+<!-- Include Materialize CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/home" style="font-weight: bold; text-transform: uppercase;">CREATIVE BLOGS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'add_blog' %}" style="text-transform: uppercase;">Add Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about" style="text-transform: uppercase;">ABOUT</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin" style="text-transform: uppercase;">ADMIN</a>
+      </li>
+      <li>
+        <a class="dropdown-trigger" href="#!" data-target="dropdown1" style="color: #555; font-weight: bold ; font-size: 16px; text-transform: uppercase; text-decoration: none; padding: 7.5px;">CATEGORIES<i class="material-icons right" style="font-size: 16px; margin-left: 5px;">arrow_drop_down</i></a>
+        <ul id="dropdown1" class="dropdown-content" style="background-color: #ffffff; border: 1px solid #ddd; padding: 10px;">
+          {% for cat in cats %}
+          <li><a href="/category/{{cat.url}}" style="color: #555; font-size: 14px;">{{cat.title}}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Include Materialize JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- Initialize Dropdown -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems);
+  });
+</script>
